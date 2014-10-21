@@ -9,15 +9,15 @@
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="425"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="v86-MS-pzO">
-                                <rect key="frame" x="0.0" y="0.0" width="363" height="378"/>
+                                <rect key="frame" x="0.0" y="0.0" width="363" height="612"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="AIc-PS-f85">
-                                        <rect key="frame" x="55" y="57" width="209" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="99" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Poll Title" minimumFontSize="17" id="AIc-PS-f85">
+                                        <rect key="frame" x="55" y="112" width="209" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -25,61 +25,56 @@
                                             <outlet property="delegate" destination="9pv-A4-QxB" id="B93-8w-Wz2"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9kc-ZN-ZLe">
-                                        <rect key="frame" x="49" y="149" width="209" height="21"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tPb-hH-1aR">
+                                        <rect key="frame" x="111" y="204" width="82" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="tPb-hH-1aR">
-                                        <rect key="frame" x="134" y="222" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <state key="normal" title="Add Option"/>
                                         <connections>
                                             <action selector="addOption:" destination="9pv-A4-QxB" eventType="touchUpInside" id="tMQ-00-YnB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xr0-9w-65E">
-                                        <rect key="frame" x="101" y="305" width="105" height="30"/>
+                                        <rect key="frame" x="111" y="544" width="105" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Add Recipients">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addRecip:" destination="9pv-A4-QxB" eventType="touchUpInside" id="IhW-dS-Jqw"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Options:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pZY-ib-A26">
-                                        <rect key="frame" x="-6" y="95" width="318" height="46"/>
+                                        <rect key="frame" x="-6" y="150" width="318" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Qpy-ju-4Hn">
-                                        <rect key="frame" x="105" y="184" width="97" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="9pv-A4-QxB" id="YFK-CC-lJp"/>
-                                        </connections>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poll Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aiu-X7-hIA">
-                                        <rect key="frame" x="111" y="28" width="105" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aiu-X7-hIA">
+                                        <rect key="frame" x="8" y="83" width="304" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zqF-jA-guZ">
-                                        <rect key="frame" x="55" y="348" width="180" height="30"/>
+                                        <rect key="frame" x="73" y="582" width="180" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Send">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="sendPoll:" destination="9pv-A4-QxB" eventType="touchUpInside" id="y5D-HS-oVT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eh1-9q-IYe">
+                                        <rect key="frame" x="30" y="45" width="49" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logout:" destination="9pv-A4-QxB" eventType="touchUpInside" id="DcB-fM-c1b"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -89,18 +84,19 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Create" image="first" id="acW-dT-cKf"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="425"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
-                        <outlet property="optionLabel" destination="9kc-ZN-ZLe" id="S7c-0m-viu"/>
-                        <outlet property="optionTitle" destination="Qpy-ju-4Hn" id="l1o-xa-kfP"/>
+                        <outlet property="addButton" destination="tPb-hH-1aR" id="e3Q-HL-Qle"/>
+                        <outlet property="addRecip" destination="xr0-9w-65E" id="E8m-GD-e1x"/>
                         <outlet property="pollTitle" destination="AIc-PS-f85" id="T2w-Di-6er"/>
                         <outlet property="scroller" destination="v86-MS-pzO" id="hfi-pi-L1X"/>
+                        <outlet property="sendButton" destination="zqF-jA-guZ" id="cNk-Zj-PzN"/>
                         <outlet property="titleLabel" destination="aiu-X7-hIA" id="f0A-5S-Vgv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400" y="-304.5"/>
+            <point key="canvasLocation" x="400" y="-306"/>
         </scene>
         <!--Results-->
         <scene sceneID="wg7-f3-ORb">

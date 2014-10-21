@@ -7,18 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface FirstViewController : UIViewController <UITextFieldDelegate>
+@interface FirstViewController : UIViewController <UITextFieldDelegate, FBFriendPickerDelegate>
 {
     IBOutlet UIScrollView *scroller;
+    NSMutableArray *optionArray;
+    NSMutableArray *friendsArray;
+    FBFriendPickerViewController *fbFriendPickerController;
 }
-@property (strong, nonatomic) IBOutlet UILabel *optionLabel;
 - (IBAction)sendPoll:(id)sender;
 - (IBAction)addOption:(id)sender;
-@property (strong, nonatomic) IBOutlet UITextField *optionTitle;
 @property (strong, nonatomic) IBOutlet UITextField *pollTitle;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *addButton;
+- (IBAction)addRecip:(id)sender;
+- (IBAction)logout:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *sendButton;
+@property (strong, nonatomic) IBOutlet UIButton *addRecip;
 
 @end
 
