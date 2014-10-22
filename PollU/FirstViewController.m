@@ -39,25 +39,12 @@ static int label_number = 10;
                 }
                 else
                 {
-                    FBRequest *request = [FBRequest requestForMe];
-                    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                        // handle response
-                        [[PFUser currentUser] setObject:[result objectForKey:@"id"]
-                                                 forKey:@"fbId"];
-                        [[PFUser currentUser] saveInBackground];
-                    }];
+                    
                 }
         }];
         }
     else {
-        FBRequest *request = [FBRequest requestForMe];
-        [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-            // handle response
-            NSLog(@"ID OF FACEBOOK USER %@",result);
-            [[PFUser currentUser] setObject:[result objectForKey:@"id"]
-                                     forKey:@"fbId"];
-            [[PFUser currentUser] saveInBackground];
-        }];
+
     }
     [scroller setScrollEnabled:YES];
     [scroller setContentSize:CGSizeMake(320, 623)];
@@ -77,19 +64,20 @@ static int label_number = 10;
 
 - (IBAction)sendPoll:(id)sender {
     NSLog(@"SEND POLL CLICKED");
-    //combine all labels into array of options and push to parse
-    //UILabel *label = (UILabel*)[self viewWithTag:LABEL_TAG+10];
-//        [PFUser logOut]; // Log out
-    
-        // Return to Login view controller
-//        [self dismissViewControllerAnimated:YES completion:nil];
-    
     //save in polls array
     if([friendsArray count]>0 && self.titleLabel.text != nil && [optionArray count]>0)
     {
+        FBRequest *request = [FBRequest requestForMe];
+        [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            // handle response
+//            [[PFUser currentUser] setObject:[result objectForKey:@"id"] forKey:@"fbId"];
+//            [[PFUser currentUser] setObject:[result objectForKey:@"id"] forKey:@"foreign_key"];
+            creator = [result objectForKey:@"name"];
+//            [[PFUser currentUser] saveInBackground];
         PFObject *poll_table = [PFObject objectWithClassName:@"Poll"];
         poll_table[@"options"] = optionArray;
         poll_table[@"poll_title"] = self.titleLabel.text;
+        poll_table[@"creator"] = creator;
         NSMutableArray *response_array = [[NSMutableArray alloc]init];
         //fill array with # of zeros per amount of options
         for(int i=0; i<[optionArray count]; i++)
@@ -97,31 +85,47 @@ static int label_number = 10;
             [response_array addObject:[NSNumber numberWithInteger:0]];
         }
         poll_table[@"responses"] = response_array;
-        [poll_table saveInBackground];
-        for (NSString *user in friendsArray)
-        {
+        //poll table is now updated
+            
+            
+        [poll_table saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-            [query whereKey:@"foreign_key" equalTo:user];
-            //get the array of ids
-            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                    NSLog(@"THIS THE SUERSS %@",objects);
-                    PFObject *user_name = objects.firstObject;
-                    NSMutableArray *polls = user_name[@"Polls"];
-                    if([polls count]>0) {
-                    [polls addObject:poll_table.objectId];
-                    [[PFUser currentUser] setObject:polls
-                                             forKey:@"Polls"];
-                    [[PFUser currentUser] saveInBackground];
+            NSLog(@"%@",friendsArray);
+            for (NSString *user in friendsArray)
+            {
+                //get the array of ids
+                [query whereKey:@"foreign_key" equalTo:user];
+                [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                    if(!error){
+                        [object[@"Polls"] addObject:poll_table.objectId];
+                        [object setObject:object[@"Polls"] forKey:@"Polls"];
+                        [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            if(!error && succeeded) {
+                            NSLog(@"FINISHED");
+                            [self resetForm];
+                            }
+                            else {
+                                NSLog(@"%@",error);
+                            }
+                        }];
                     }
-                 else {
-                    //if there is no poll table or polls array yet
-                        NSMutableArray *polls = [[NSMutableArray alloc]initWithObjects:poll_table.objectId, nil];
-                        [[PFUser currentUser] setObject:polls
-                                                 forKey:@"Polls"];
-                        [[PFUser currentUser] saveInBackground];
-                }
-            }];
+                    else{
+                        NSLog(@"%@",error);
+                    }
+                }];
+            }
+
+        }];
+        
+    }];
         }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missing Title,Option or Recipients"
+                                                        message:@"Please Add Missing Poll Information."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     }
 }
 
@@ -169,7 +173,7 @@ static int label_number = 10;
                     UILabel *label = (UILabel *)sub;
                     if(label.tag == textField.tag)
                     {
-                        label.text = [NSString stringWithFormat:@"%d. %@",textField.tag-9,optionName];
+                        label.text = [NSString stringWithFormat:@"%ld. %@",textField.tag-9,optionName];
                         label.textColor = [UIColor blueColor];
                     }
                 }
@@ -180,6 +184,36 @@ static int label_number = 10;
     }
     return YES;
 }
+
+-(void)resetForm{
+    for (UIView *addedView in [self.view subviews])
+    {
+        for (UIView *sub in [addedView subviews])
+        {
+            if([sub isKindOfClass:[UILabel class]])
+            {
+                UILabel *label = (UILabel *)sub;
+                if(label.tag != -1)
+                {
+                    if(label.tag != -2)
+                    {
+                        UILabel *label = (UILabel *)sub;
+                        [label removeFromSuperview];
+                    }
+                }
+            }
+        }
+    }
+    self.addButton.frame = CGRectMake(30, 260, 105, 50);
+    self.addRecip.frame = CGRectMake(190, 260, 105, 50);
+    self.sendButton.frame = CGRectMake(110, 350, 105, 30);
+    self.titleLabel.text = @"";
+    optionArray = [[NSMutableArray alloc]init];
+    friendsArray = [[NSMutableArray alloc]init];
+    delta_height = 0;
+    label_number = 10;
+}
+
 - (IBAction)addRecip:(id)sender {
     if (fbFriendPickerController == nil) {
         // Create friend picker, and get data loaded into it.
@@ -205,11 +239,8 @@ static int label_number = 10;
 - (void)facebookViewControllerDoneWasPressed:(id)sender{
     //code goes here
     for (id<FBGraphUser> user in fbFriendPickerController.selection) {
-        NSLog(@"%@",user);
-        [[PFUser currentUser] setObject:user.id
-                                 forKey:@"foreign_key"];
-        [[PFUser currentUser] saveInBackground];
         [friendsArray addObject:user.id];
+        NSLog(@"%@",friendsArray);
     }
     [self dismissViewControllerAnimated:YES completion:NULL];
 }

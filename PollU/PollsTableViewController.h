@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TakePollViewController.h"
 
-@interface PollsTableViewController : UITableViewController
-
+@interface PollsTableViewController : UITableViewController <UITableViewDelegate>
+{
+    NSArray *poll_list;
+}
 @end

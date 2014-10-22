@@ -31,6 +31,8 @@
 		923A5FE719EB109600D54361 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 923A5FE619EB109600D54361 /* SystemConfiguration.framework */; };
 		923A5FE919EB127D00D54361 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 923A5FE819EB127D00D54361 /* FacebookSDK.framework */; };
 		923A5FEC19EB1B5E00D54361 /* PollsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 923A5FEB19EB1B5E00D54361 /* PollsTableViewController.m */; };
+		92ED16C719F61260000575AF /* TakePollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92ED16C519F61260000575AF /* TakePollViewController.m */; };
+		92ED16C819F61260000575AF /* TakePollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92ED16C619F61260000575AF /* TakePollViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,9 @@
 		923A5FE819EB127D00D54361 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		923A5FEA19EB1B5E00D54361 /* PollsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PollsTableViewController.h; sourceTree = "<group>"; };
 		923A5FEB19EB1B5E00D54361 /* PollsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PollsTableViewController.m; sourceTree = "<group>"; };
+		92ED16C419F61260000575AF /* TakePollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TakePollViewController.h; path = ../TakePollViewController.h; sourceTree = "<group>"; };
+		92ED16C519F61260000575AF /* TakePollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TakePollViewController.m; path = ../TakePollViewController.m; sourceTree = "<group>"; };
+		92ED16C619F61260000575AF /* TakePollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TakePollViewController.xib; path = ../TakePollViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +155,9 @@
 				923A5FA719EB0C1A00D54361 /* AppDelegate.m */,
 				923A5FA919EB0C1A00D54361 /* FirstViewController.h */,
 				923A5FAA19EB0C1A00D54361 /* FirstViewController.m */,
+				92ED16C419F61260000575AF /* TakePollViewController.h */,
+				92ED16C519F61260000575AF /* TakePollViewController.m */,
+				92ED16C619F61260000575AF /* TakePollViewController.xib */,
 				923A5FEA19EB1B5E00D54361 /* PollsTableViewController.h */,
 				923A5FEB19EB1B5E00D54361 /* PollsTableViewController.m */,
 				923A5FAC19EB0C1A00D54361 /* SecondViewController.h */,
@@ -272,6 +280,7 @@
 			files = (
 				923A5FB119EB0C1A00D54361 /* Main.storyboard in Resources */,
 				923A5FB619EB0C1A00D54361 /* LaunchScreen.xib in Resources */,
+				92ED16C819F61260000575AF /* TakePollViewController.xib in Resources */,
 				923A5FB319EB0C1A00D54361 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +305,7 @@
 				923A5FAB19EB0C1A00D54361 /* FirstViewController.m in Sources */,
 				923A5FA519EB0C1A00D54361 /* main.m in Sources */,
 				923A5FCD19EB0DDA00D54361 /* LoginViewController.m in Sources */,
+				92ED16C719F61260000575AF /* TakePollViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +506,7 @@
 				923A5FC719EB0C1A00D54361 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		923A5FC819EB0C1A00D54361 /* Build configuration list for PBXNativeTarget "PollUTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +515,7 @@
 				923A5FCA19EB0C1A00D54361 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface SecondViewController : UIViewController
+{
+        NSString *user_name;
+        NSMutableArray *results;
+        NSMutableArray *options;
+        NSMutableArray *titles;
+}
+- (IBAction)stepper:(UIStepper *)sender;
+@property (strong, nonatomic) IBOutlet UIStepper *stepperObject;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+
 
 
 @end

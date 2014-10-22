@@ -15,6 +15,7 @@
     NSMutableArray *optionArray;
     NSMutableArray *friendsArray;
     FBFriendPickerViewController *fbFriendPickerController;
+    NSString *creator;
 }
 - (IBAction)sendPoll:(id)sender;
 - (IBAction)addOption:(id)sender;
